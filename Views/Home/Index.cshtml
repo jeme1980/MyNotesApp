@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+
+<h1 id="aa">ssssss</h1>
+<section>
+    <div class="container">
+        <h1>@TempData["id"]</h1>
+        <form method="post">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="gender" value="option1">
+                <label class="form-check-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="gender" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="gender" value="option3">
+                <label class="form-check-label">3</label>
+            </div>
+            <select name="note" id="note" class="form-select" asp-items="ViewBag.note">
+                <option value="" disabled selected>select note</option>
+            </select>
+
+            <input type="submit" value="add value" class="btn btn-warning" />
+        </form>
+
+        @{
+            var gender = (string[])TempData["gender"];
+            var note = (int[])TempData["note"];
+            if (gender != null)
+            {
+                for (int i = 0; i < gender.Length; i++)
+                {
+                    <h2>@gender[i]</h2>
+                }
+            }
+
+            if (note != null)
+            {
+                for (int i = 0; i < note.Length; i++)
+                {
+                    <h2>@note[i]</h2>
+                }
+            }
+        }
+    </div>
+</section>
+
+@section scripts{
+    <script>
+        $(document).ready(function(){
+            $('#note').change(function(){
+                var a = $('#note Option:Selected').text();
+                $('#aa').text(a);
+            })
+        })
+    </script>
+}

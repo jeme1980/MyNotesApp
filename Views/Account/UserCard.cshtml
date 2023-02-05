@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AppUser>
+@inject UserManager<AppUser> UserManager
+@{
+    ViewData["Title"] = "Users";
+}
+
+<section>
+    <div class="container">
+        <div class="row justify-content-end text-center">
+            <div class="col-6 col-md-4 col-lg-6">
+                <form asp-controller="Account" asp-action="Filter">
+                    <div class="input-group mb-3">
+                        <input type="text" name="getuser" class="form-control" placeholder="search user">
+                        <button class="btn btn-outline-secondary" type="submit">חפש</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- / .row -->
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-12 col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="border text-center py-5 px-3">
+                    <div class="mb-4">
+                        <img class="rounded-circle shadow overflow-hidden" src="~/Images/Users/@item.ImageFile" width="100px"  asp-append-version = "true" height="100px" alt="">
+                    </div>
+                    <div>
+                        <h5 class="mb-1">@item.FirstName @item.LastName</h5>
+                        <small class="text-muted mb-3 d-block">@item.Gender?.Name</small>
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="border rounded px-2 py-1 text-dark" href="#"><i class="la la-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="border rounded px-2 py-1 text-dark" href="#"><i class="la la-dribbble"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="border rounded px-2 py-1 text-dark" href="#"><i class="la la-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="border rounded px-2 py-1 text-dark" href="#"><i class="la la-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+﻿
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+        </tr>
+    </thead>
+    <tbody id="hoopylst">
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            loadhoppy();
+        });
+        function loadhoppy() {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetHoppList","Ajax")',
+                success: function (result) {
+                    var row;
+                    for (var i = 0; i < result.length; i++) {
+                        row +=
+                            `<tr>
+                                    <td>${result[i].id}</td>
+                                    <td>${result[i].name}</td>
+                            </tr>`;
+                    };
+                    $('#hoopylst').html(row);
+                },
+                error: function () {
+                    alert('eroooor');
+                }
+            });
+        };
+    </script>
+}

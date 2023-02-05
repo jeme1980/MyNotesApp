@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AppUser>
+@inject UserManager<AppUser> UserManager
+@{
+    ViewData["Title"] = "Users";
+}
+
+<section>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <form>
+                    <button asp-controller="Account" asp-action="Register" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GenderId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <td>
+                                roles
+                            </td>
+                            <td>
+                                Hoppies
+                            </td>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img class="rounded-circle" src="~/Images/Users/@item.ImageFile" asp-append-version="true" width="40px" height="40px">
+                                    @item.FirstName @item.LastName
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Gender.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @string.Join(",",UserManager.GetRolesAsync(item).Result)
+                                </td>
+                                <td>
+                                    @*@foreach (var hoppy in item.HoppyUser)
+                                    {
+                                        <span>@hoppy.Hoppy.Name</span>
+                                    }*@
+                                    @string.Join(",",item.HoppyUser.Select(a => a.Hoppy.Name).ToList())
+                                </td>
+                                <td>
+                                    <a asp-asp-controller="Account" asp-action="Update" asp-route-id="@item.Id">Update</a>/
+                                    <a asp-asp-controller="Account" asp-action="UpdateUser" asp-route-id="@item.Id">Update User</a>/
+                                    <a asp-asp-controller="Account" asp-action="ManageRole" asp-route-userId="@item.Id">Manage Role</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+

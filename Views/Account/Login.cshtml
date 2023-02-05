@@ -1,0 +1,49 @@
+﻿@model MyNotesApp.ViewModel.LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="bg-white shadow rounded p-4">
+                    <h2 class="text-center mb-3">Sign In</h2>
+                    <form asp-action="Login" method="post" asp-route-returnurl="@Model.ReturnUrl">
+                        <div class="messages"></div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="mb-3">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <div asp-validation-for="Password" class="text-danger"></div>
+                        </div>
+                        <div class="form-group mt-4 mb-5">
+                            <div class="remember-checkbox d-flex align-items-center justify-content-between">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" asp-for="RememberMe">
+                                    <label class="form-check-label">זכור אותי</label>
+                                </div> <a href="#">Forgot Password?</a>
+                            </div>
+                        </div> 
+                        <input type="submit" value="התחבר" class="btn btn-primary" />
+                    </form>
+                    <div class="d-flex align-items-center text-center justify-content-center mt-4">
+                        <span class="text-muted me-1">אין לך חשבון?</span>
+                        <a asp-controller="Account"  asp-action="Register">הרשמה</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

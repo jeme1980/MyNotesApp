@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MyNotesApp.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section>
+    <div class="container"> 
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr class="bg-info">
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentLasttName)
+            </th>
+                    <th>hoppy</th>
+                    <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentLasttName)
+            </td>
+            <td>
+                @string.Join(",",item.studentHoppies.Select(x => x.Hoppy.Name).ToList())
+            </td>
+                        <td class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id=item.StudentId },new {@class="btn btn-info btn-sm"})
+                    @Html.ActionLink("Details", "Details", new { id=item.StudentId },new {@class="btn btn-primary btn-sm"})
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ },new {@class="btn btn-danger btn-sm"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </div>
+</section>

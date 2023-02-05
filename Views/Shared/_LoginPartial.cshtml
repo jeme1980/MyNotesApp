@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MyNotesApp.Core.IRepository;
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    var loggedInUser = UserManager.Users?.FirstOrDefault(x => x.UserName == User.Identity.Name);
+}
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var usr = UserManager.GetUserAsync(User).Result.FirstName;
+        <li class="nav-item">
+            <a class="nav-link active" asp-area="" asp-page="/Account/Manage/Index" title="Manage">שלום @loggedInUser.FirstName @loggedInUser.LastName @*@User.Identity?.Name!*@</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="btn btn-primary btn-sm ms-3 d-sm-inline-block d-none">התנתק</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+    }
+</ul>

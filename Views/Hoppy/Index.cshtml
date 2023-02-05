@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HoppyVM>
+
+@{
+    ViewData["Title"] = "רשימת תחביבים";
+}
+<section>
+    <div class="container">
+        <partial name="_CreateBtn"></partial>
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                            <a asp-controller="Hoppy" asp-action="Delete" onclick="return confirm('delete it ? ....')" asp-route-id="@item.Id" class="card-link">מחק</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/hoppy.js"></script>
+}

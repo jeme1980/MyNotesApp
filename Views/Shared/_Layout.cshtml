@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="bootstrap 5, premium, multipurpose, sass, scss, saas" />
+    <meta name="description" content="Bootstrap 5 Landing Page Template" />
+    <meta name="author" content="www.themeht.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Title -->
+    <title>Winck - Bootstrap 5 Multipurpose Landing Page</title>
+
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" href="~/user/assets/images/favicon.ico" />
+
+    <!-- inject css start -->
+    <!--== bootstrap -->
+    <link href="~/user/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--== animate -->
+    <link href="~/user/assets/css/animate.css" rel="stylesheet" type="text/css" />
+
+    <!--== line-awesome -->
+    <link href="~/user/assets/css/line-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!--== magnific-popup -->
+    <link href="~/user/assets/css/magnific-popup.css" rel="stylesheet" type="text/css" />
+
+    <!--== owl.carousel -->
+    <link href="~/user/assets/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+
+    <!--== spacing -->
+    <link href="~/user/assets/css/spacing.css" rel="stylesheet" type="text/css" />
+
+    <!--== theme.min -->
+    <link href="~/user/assets/css/theme.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+    <!-- inject css end -->
+
+</head>
+
+<body>
+    <!-- page wrapper start -->
+    <div class="page-wrapper">
+        <!-- preloader start -->
+        <div id="ht-preloader">
+            <div class="loader clear-loader">
+                <span>ה</span>
+                <span>ע</span>
+                <span>ר</span>
+                <span>ו</span>
+                <span>ת</span>
+            </div>
+        </div>
+        <!-- preloader end -->
+        <!--header start-->
+        <header class="site-header">
+            <div id="header-wrap">
+                <div class="container">
+                    <div class="row">
+                        <!--menu start-->
+                        <div class="col">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <a class="navbar-brand logo text-primary mb-0 font-w-7" asp-controller="Home" asp-action="Index">
+                                    ה<span class="text-dark font-w-4">ערות שלי</span>
+                                </a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNav">
+                                    <ul class="navbar-nav mx-auto">
+                                        <li class="nav-item"> <a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a></li>
+                                        <li class="nav-item"> <a class="nav-link" asp-controller="Note" asp-action="Index">הערות שלי</a></li>
+                                        <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="Users">משתמשים</a></li>
+                                        <li class="nav-item"> <a class="nav-link" asp-controller="Account" asp-action="UserCard">כרטיס משתמשים</a></li>
+                                        <li class="nav-item"> <a class="nav-link" asp-controller="Hoppy" asp-action="Index">תחביבים</a></li>
+                                        <li class="nav-item"> <a class="nav-link" asp-controller="SHCheckBox" asp-action="Index">stufdent</a></li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Features</a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" asp-controller="Account" asp-action="CreateUser">New User</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" asp-controller="Student" asp-action="Index">Student List</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" asp-controller="Student" asp-action="StudentList">Student List 1</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <partial name="_LoginPartial" />
+                                </div>
+                            </nav>
+                        </div>
+                        <!--menu end-->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--header end-->
+        <!--body content start-->
+        <div class="page-content">
+            @RenderBody()
+        </div>
+        <!--body content end-->
+        <!--footer start-->
+        <footer>
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col">
+                        <hr class="m-0">
+                    </div>
+                </div>
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-6">
+                        Copyright ©2020 All rights reserved | Winck is made by <i class="lar la-heart text-primary heartBeat2"></i>  <u><a class="text-primary" href="#">ThemeHt</a></u>
+                    </div>
+                    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                        <ul class="list-inline mb-0">
+                            <li class="me-3 list-inline-item">
+                                <a class="list-group-item-action" href="#">
+                                    Term Of Service
+                                </a>
+                            </li>
+                            <li class="me-3 list-inline-item">
+                                <a class="list-group-item-action" href="#">
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="list-group-item-action" href="#">
+                                    Support
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--footer end-->
+    </div>
+
+    <!-- page wrapper end -->
+    <!--back-to-top start-->
+    <div class="scroll-top"><a class="smoothscroll" href="#top">חזרה למעלה</a></div>
+    <!--back-to-top end-->
+    <!-- inject js start -->
+    <!--== jquery -->
+    <script src="~/user/assets/js/jquery.min.js"></script>
+
+    <!--== bootstrap -->
+    <script src="~/user/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!--== owl-carousel -->
+    <script src="~/user/assets/js/owl.carousel.min.js"></script>
+
+    <!--== magnific-popup -->
+    <script src="~/user/assets/js/jquery.magnific-popup.min.js"></script>
+
+    <!--== counter -->
+    <script src="~/user/assets/js/counter.js"></script>
+
+    <!--== countdown -->
+    <script src="~/user/assets/js/jquery.countdown.min.js"></script>
+
+    <!--== particles -->
+    <script src="~/user/assets/js/particles.js"></script>
+
+    <!--== typer -->
+    <script src="~/user/assets/js/typer.js"></script>
+
+    <!--== wow -->
+    <script src="~/user/assets/js/wow.min.js"></script>
+
+    <!--== theme-script -->
+    <script src="~/user/assets/js/theme-script.js"></script>
+
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tiny.cloud/1/nyu7njezn1q20slw9049f1z1z3pqxk9tog95crmwfwlw2ik1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+    <!-- inject js end -->
+    @await Component.InvokeAsync("NToastNotify")
+</body>
+</html>

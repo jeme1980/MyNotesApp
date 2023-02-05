@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MyNotesApp.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<section>
+    <div class="container">
+        <h1>Index</h1>
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentFirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentLasttName)
+                    </th>
+                    <th>
+                        hoppy
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentFirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentLasttName)
+                        </td>
+                        <td>
+                            @(string.Join("/",item.studentHoppies.Select(s => s.Hoppy.Name)))
+                        </td>
+                        <td>
+                            
+                            <form asp-action="Delete" method="post" asp-route-id="@item.StudentId">
+                                <a asp-action="Edit" asp-route-id="@item.StudentId" class="btn btn-sm w-25 btn-info">ערוך</a>
+                                <a asp-action="EditStudent" asp-route-id="@item.StudentId" class="btn btn-sm w-25 btn-info">edit s</a>
+                                <input type="submit" class="btn btn-warning btn-sm" value="delet">
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </form>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</section>

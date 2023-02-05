@@ -1,0 +1,45 @@
+﻿@model HoppyVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+<section>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Create</h1>
+            <h4>Hoppy</h4>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <textarea asp-for="Name" class="form-control"></textarea>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            directionality: 'rtl',
+            language_url: '~/js/langs/ar.js',
+        });
+    </script>
+}
